@@ -1,0 +1,26 @@
+name: coc.py
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run script
+        run: python coc.py 2> error.log
+      - name: Upload error log
+        uses: actions/upload-artifact@v2
+        with:
+          name: error-log
+          path: error.log
