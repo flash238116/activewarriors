@@ -2,7 +2,7 @@ name: coc.py
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   run-script:
