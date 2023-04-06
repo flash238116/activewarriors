@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -18,7 +18,7 @@ jobs:
         run: |
           pip install -r requirements.txt
       - name: Run script
-        run: python coc.py 2> error.log
+        run: python coc.py > error.log
       - name: Upload error log
         uses: actions/upload-artifact@v2
         with:
